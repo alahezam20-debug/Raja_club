@@ -3,24 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نادي الرجاء الرياضي - سوق أهراس</title>
+    <title>نادي الرجاء الرياضي سوق أهراس</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background-color: #f4f4f9; margin: 0; padding: 0; }
-        header { background-color: #1a5276; color: white; padding: 20px; }
-        .content { padding: 40px 20px; }
-        h1 { margin: 0; font-size: 2em; }
-        p { font-size: 1.2em; color: #333; }
+        :root {
+            --primary-color: #1a5276;
+            --secondary-color: #f39c12;
+            --dark-color: #2c3e50;
+            --light-color: #f4f6f7;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: var(--light-color); color: var(--dark-color); }
+        header { background-color: var(--primary-color); color: white; text-align: center; padding: 30px 20px; border-bottom: 5px solid var(--secondary-color); }
+        header h1 { margin: 0; font-size: 2.2rem; }
+        header p { margin: 5px 0 0; font-size: 1.1rem; opacity: 0.9; }
+        .container { max-width: 800px; margin: 20px auto; padding: 20px; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.05); border-radius: 8px; }
+        .welcome-box { text-align: center; padding: 10px 0 30px; border-bottom: 2px dashed #ccc; }
+        .section-title { color: var(--primary-color); border-right: 4px solid var(--secondary-color); padding-right: 10px; margin-top: 30px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: center; }
+        th { background-color: var(--primary-color); color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        footer { text-align: center; padding: 20px; background-color: var(--dark-color); color: white; margin-top: 40px; font-size: 0.9rem; }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>نادي الرجاء الرياضي</h1>
-        <p>سوق أهراس</p>
+        <h1>نادي الرجاء الرياضي سوق أهراس</h1>
+        <p>الموقع الرسمي للجمعية الرياضية</p>
     </header>
-    <div class="content">
-        <h2>مرحباً بكم في الموقع الرسمي</h2>
-        <p>الموقع قيد التجهيز حالياً.</p>
-        <p>قريباً سيتم إضافة أوقات وتفاصيل تدريبات الجودو، وأحدث أخبار الجمعية.</p>
+
+    <div class="container">
+        <div class="welcome-box">
+            <h2>مرحباً بكم في فضاء النادي الرقمي</h2>
+            <p>نعمل من خلال هذا الموقع على إبقاء رياضيينا وأولياء الأمور على اطلاع دائم بأحدث الإعلانات، جداول التدريب، والأنشطة الخاصة برياضة الجودو والفنون القتالية.</p>
+        </div>
+
+        <h3 class="section-title">برنامج التوقيت الأسبوعي للحصص التدريبية</h3>
+        
+        <h4>1. قاعة بوغالم عبيد</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>الفئة المدربة</th>
+                    <th>الأيام</th>
+                    <th>التوقيت</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>المجموعة الأولى (أصاغر)</td>
+                    <td>السبت - الإثنين - الأربعاء</td>
+                    <td>16:00 - 17:30</td>
+                </tr>
+                <tr>
+                    <td>المجموعة الثانية (أكابر)</td>
+                    <td>السبت - الإثنين - الأربعاء</td>
+                    <td>18:00 - 19:30</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2. قاعة شوشان</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>الفئة المدربة</th>
+                    <th>الأيام</th>
+                    <th>التوقيت</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>مجموعة الجودو (فئات صغرى)</td>
+                    <td>الأحد - الثلاثاء - الخميس</td>
+                    <td>17:00 - 18:30</td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © نادي الرجاء الرياضي سوق أهراس</p>
+    </footer>
+
 </body>
 </html>
