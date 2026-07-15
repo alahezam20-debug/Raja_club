@@ -1,91 +1,20 @@
-<!DOCTYPE html>
-<html dir="rtl" lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نادي الرجاء الرياضي سوق أهراس</title>
-    <style>
-        :root {
-            --primary-color: #1a5276;
-            --secondary-color: #f39c12;
-            --dark-color: #2c3e50;
-            --light-color: #f4f6f7;
-        }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: var(--light-color); color: var(--dark-color); }
-        header { background-color: var(--primary-color); color: white; text-align: center; padding: 30px 20px; border-bottom: 5px solid var(--secondary-color); }
-        header h1 { margin: 0; font-size: 2.2rem; }
-        header p { margin: 5px 0 0; font-size: 1.1rem; opacity: 0.9; }
-        .container { max-width: 800px; margin: 20px auto; padding: 20px; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.05); border-radius: 8px; }
-        .welcome-box { text-align: center; padding: 10px 0 30px; border-bottom: 2px dashed #ccc; }
-        .section-title { color: var(--primary-color); border-right: 4px solid var(--secondary-color); padding-right: 10px; margin-top: 30px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: center; }
-        th { background-color: var(--primary-color); color: white; }
-        tr:nth-child(even) { background-color: #f9f9f9; }
-        footer { text-align: center; padding: 20px; background-color: var(--dark-color); color: white; margin-top: 40px; font-size: 0.9rem; }
-    </style>
-</head>
-<body>
+وضّح لي هذا بالضبط: كل جهاز سجّل رياضياً مختلفاً، لكن كل جهاز يعرض لاعبه فقط بدل أن يعرض الاثنين معاً. هذا يعني أن التزامن لم يعمل بشكل صحيح — على الأرجح لأن الجهازين فتحا الموقع في نفس الوقت تقريباً، فكل واحد منهما "استبدل" بيانات الآخر بدل أن يضيف إليها.
 
-    <header>
-        <h1>نادي الرجاء الرياضي سوق أهراس</h1>
-        <p>الموقع الرسمي للجمعية الرياضية</p>
-    </header>
+هذه مشكلة حقيقية في الطريقة البسيطة التي بنيتها (كل حفظ يستبدل كامل البيانات بدل دمجها). سأصلحها الآن بحيث:
+- قبل كل عملية حفظ، يجلب الموقع أحدث نسخة من البيانات المشتركة أولاً
+- يدمج التسجيلات الجديدة معها (بدل استبدالها بالكامل)
+- ثم يحفظ النسخة المدموجة
 
-    <div class="container">
-        <div class="welcome-box">
-            <h2>مرحباً بكم في فضاء النادي الرقمي</h2>
-            <p>نعمل من خلال هذا الموقع على إبقاء رياضيينا وأولياء الأمور على اطلاع دائم بأحدث الإعلانات، جداول التدريب، والأنشطة الخاصة برياضة الجودو والفنون القتالية.</p>
-        </div>
+هذا سيمنع فقدان البيانات حتى لو استُخدم الموقع من جهازين في نفس الوقت تقريباً.
 
-        <h3 class="section-title">برنامج التوقيت الأسبوعي للحصص التدريبية</h3>
-        
-        <h4>1. قاعة بوغالم عبيد</h4>
-        <table>
-            <thead>
-                <tr>
-                    <th>الفئة المدربة</th>
-                    <th>الأيام</th>
-                    <th>التوقيت</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>المجموعة الأولى (أصاغر)</td>
-                    <td>السبت - الإثنين - الأربعاء</td>
-                    <td>16:00 - 17:30</td>
-                </tr>
-                <tr>
-                    <td>المجموعة الثانية (أكابر)</td>
-                    <td>السبت - الإثنين - الأربعاء</td>
-                    <td>18:00 - 19:30</td>
-                </tr>
-            </tbody>
-        </table>
+الملف الآن مُصلح — قبل كل حفظ، يجلب الموقع أحدث نسخة مشتركة أولاً ثم يدمج التسجيلات الجديدة معها بدل استبدالها بالكامل. هذا يمنع تكرار المشكلة التي حصلت (فقدان "عيدودي صلاح" عند تسجيل "Tark gati" من جهاز آخر).
 
-        <h4>2. قاعة شوشان</h4>
-        <table>
-            <thead>
-                <tr>
-                    <th>الفئة المدربة</th>
-                    <th>الأيام</th>
-                    <th>التوقيت</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>مجموعة الجودو (فئات صغرى)</td>
-                    <td>الأحد - الثلاثاء - الخميس</td>
-                    <td>17:00 - 18:30</td>
-                </tr>
-            </tbody>
-        </table>
+**لتحديث الموقع بنفس الطريقة السابقة:**
+1. افتح `index.html` في مستودعك على GitHub
+2. "..." ← **"Edit file"**
+3. اضغط مطولاً داخل الصندوق ← **"تحديد الكل"** ثم الصق محتوى الملف الجديد المرفق أعلاه
+4. **"Commit changes"**
 
-    </div>
+⚠️ ملاحظة صغيرة وصريحة: هذا الإصلاح يمنع فقدان التسجيلات الجديدة عند التزامن، لكن **الحذف** (مثلاً حذف رياضي) قد يستغرق لحظة إضافية ليتزامن بين الأجهزة إذا حذفته من جهاز بينما جهاز آخر مفتوح بنفس الوقت. للاستخدام العادي (تسجيل لاعب بلاعب، جهاز واحد غالباً)، هذا لن يسبب أي مشكلة.
 
-    <footer>
-        <p>جميع الحقوق محفوظة © نادي الرجاء الرياضي سوق أهراس</p>
-    </footer>
-
-</body>
-</html>
+بعد الرفع، جرّب تسجيل رياضي من جهاز، ثم افتح الموقع من الجهاز الآخر (بدون تسجيل جديد) وتأكد أنك ترى **كل** الرياضيين (عيدودي صلاح + Tark gati) معاً.
